@@ -5,8 +5,10 @@ const config = require("./config.json");
 var prefix = config.prefix;
 
 
+
 client.on("ready", () => {
     console.log("venga crack, skere funciona!");
+    client.user.setActivity('Acariciar Gatitos')
  });
 
  client.on("message", (message) => {                            //Deteccion de mensajes
