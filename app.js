@@ -263,4 +263,4 @@ client.on("ready", () => {
  
  client.login(config.token); 
 
-//1.1 en documentos
+//1.0 en documentos
