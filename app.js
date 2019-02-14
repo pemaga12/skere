@@ -291,6 +291,23 @@ client.on("ready", () => {
             }
         }
 
+        else if (message.content.startsWith(prefix + "papada")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/papada.mp3`);
+                message.channel.send(':no_good: | El podeeer de la papadaaa');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':no_good: | El podeeer de la papadaaa').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/papada.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
         else if (message.content.startsWith(prefix + "vete")) { 
             let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz) {
