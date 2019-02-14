@@ -239,6 +239,58 @@ client.on("ready", () => {
             }
         }
 
+        else if (message.content.startsWith(prefix + "roblox")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/roblox.mp3`);
+                message.channel.send(':robot: | UHHHH');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':robot: | UHHHH').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/roblox.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
+        
+        else if (message.content.startsWith(prefix + "lazy")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/lazy.mp3`);
+                message.channel.send(':one: | We are number one!!');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':one: | We are number one!!').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/lazy.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
+        else if (message.content.startsWith(prefix + "wii")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/wii.mp3`);
+                message.channel.send(':video_game: | Back to 2006');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':video_game: | Back to 2006').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/wii.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
         else if (message.content.startsWith(prefix + "vete")) { 
             let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz) {
