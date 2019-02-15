@@ -8,7 +8,15 @@ var prefix = config.prefix;
 
 client.on("ready", () => {
     console.log("venga crack, skere funciona!");
-    client.user.setActivity('Acariciar Gatitos')
+    //client.user.setStatus("STREAMING");
+    //client.user.setActivity('Acariciar Gatitos')
+    client.user.setPresence({
+        game: {
+            name: 'Perreo del duro',
+            type: "STREAMING",
+            url: "https://www.twitch.tv/monstercat"
+        }
+    }); 
  });
 
  client.on("message", (message) => {                            //Deteccion de mensajes
