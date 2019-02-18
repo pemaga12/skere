@@ -334,6 +334,81 @@ client.on("ready", () => {
             }
         }
 
+        
+        else if (message.content.startsWith(prefix + "malacaton")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/malacaton.mp3`);
+                message.channel.send(':peach: | Wellington quiu');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':peach: | Wellington quiu').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/malacaton.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
+        else if (message.content.startsWith(prefix + "perdon")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/perdonas.mp3`);
+                message.channel.send(':cat: | Me perdonas?');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':cat: | Me perdonas?').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/perdonas.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+        
+        else if (message.content.startsWith(prefix + "fortnite")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fortnite.mp3`);
+                message.channel.send(':bus: | Saltemos');
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':bus: | Saltemos').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fortnite.mp3`);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
+        else if (message.content.startsWith(prefix + "fbi")) { 
+            let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
+                message.channel.send(':police_car:  | OPEN UP');
+                message.channel.send({
+                    file: "http://i.imgur.com/HpGOuYV.mp4" //Imagen
+                });
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(':police_car:  | OPEN UP').catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
+                        message.channel.send({
+                            file: "http://i.imgur.com/HpGOuYV.mp4" //Imagen
+                        });
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
+        }
+
         else if (message.content.startsWith(prefix + "vete")) { 
             let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz) {
