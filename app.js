@@ -1,7 +1,6 @@
 ﻿const Discord = require("discord.js");
-const  client = new Discord.Client();
+const client = new Discord.Client();
 const config = require("./config.json");
-//Prefijo
 var prefix = config.prefix;
 
 
@@ -21,9 +20,44 @@ client.on("ready", () => {
 
  client.on("message", (message) => {                            //Deteccion de mensajes
     
-    
-    if (!message.content.startsWith(prefix)) return;            //Prevencion bucle infinito
     if (message.author.bot) return;                             //Prevencion bucle infinito
+   
+    if(message.content.includes("potoo")){
+       
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Ahi te va un pajarito cocainómano")
+        .setColor(0xFABADA)
+        .setDescription("")
+        .setFooter("Los pajaros potoo y pollazo S.L. © dominarán el mundo", client.user.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "http://i.imgur.com/t7v7PlV.jpg" //Imagen
+        });
+
+    }
+
+    if(message.content.includes("titi")){
+            
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Titis a la venta")
+        .setColor(0xFABADA)
+        .setDescription("Compra un titi, el mejor animal a la venta")
+        .setFooter("Titi es vendido por pollazo S.L. ©", client.user.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "http://i.imgur.com/590SeEm.jpg" //Imagen
+        });
+
+    }
+    
+    if(message.author.tag == "Chocapic#4309" || message.author.tag == "pemaga12#3068"){             //Comandos policía
+       estebaranz(message);   
+    }   
+
+   
+    if (!message.content.startsWith(prefix)) return;            //Prevencion bucle infinito
     
     if (message.content.startsWith(prefix)){
 
@@ -38,7 +72,7 @@ client.on("ready", () => {
             .addField("raquel", "Mi waifu <3", true)
             .addBlankField(true)
             .addField("mauri", "Cuidado con este comando, es peligroso", true)
-            .addBlankField(true)
+            .addBlankField(true) 
             .addField("dani", "Amante del fortnite, agregadle", true)
             .addBlankField(true)
             .addBlankField(true)
@@ -386,24 +420,18 @@ client.on("ready", () => {
             }
         }
 
-        else if (message.content.startsWith(prefix + "fbi")) { 
+        else if (message.content.startsWith(prefix + "fbi") && message.author.tag == "Chocapic#4309") {
             let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz || Canalvoz.type !== 'voice') {
             message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
             } else if (message.guild.voiceConnection) {
                 const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
                 message.channel.send(':police_car:  | OPEN UP');
-                message.channel.send({
-                    file: "http://i.imgur.com/HpGOuYV.mp4" //Imagen
-                });
             } else {
              message.channel.send('Conectando...').then(m => {
                   Canalvoz.join().then(() => {
                        m.edit(':police_car:  | OPEN UP').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
-                        message.channel.send({
-                            file: "http://i.imgur.com/HpGOuYV.mp4" //Imagen
-                        });
+                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`); 
                  }).catch(error => message.channel.send(error));
              }).catch(error => message.channel.send(error));
             }
@@ -429,10 +457,62 @@ client.on("ready", () => {
     
             message.channel.send({embed});
         }
+
+
     } 
 
  });
  
+function estebaranz(message){
+    if(message.content.includes("detenido")){
+            
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Alto, policía")
+        //.setColor(0xFABADA)
+        .setDescription("Quedas detenido")
+        .setFooter("Mensaje enviado por el alguacil", message.author.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "http://i.imgur.com/1jqqZa5.jpg" //Imagen
+        }); 
+        
+        message.channel.send({
+            file: "http://i.imgur.com/JDSsFn0.jpg" //Imagen
+        }); 
+    }
+
+    else if(message.content.includes("la mejor")){
+            
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Es mi BAE")
+        .setColor(0xFABADA)
+        .setFooter("Mensaje enviado por el alguacil", message.author.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "http://i.imgur.com/uCohXG8.jpg" //Imagen
+        }); 
+
+    }
+
+    else if(message.content.includes("ricardo")){
+            
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Alguien me ha llamado?")
+        .setColor(0xFABADA)
+        .setFooter("Mensaje enviado por el alguacil", message.author.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "https://media.tenor.com/images/ccf3069a295be08b371a9097841e4ec9/tenor.gif" //Imagen
+        }); 
+
+    }
+
+    return null;
+}
+
+
  client.login(config.token); 
 
-//1.0 en documentos
