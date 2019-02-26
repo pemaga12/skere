@@ -2,6 +2,7 @@
 const client = new Discord.Client();
 const config = require("./config.json");
 var prefix = config.prefix;
+var soundPrefix = config.soundPrefix;
 
 
 
@@ -21,46 +22,23 @@ client.on("ready", () => {
  client.on("message", (message) => {                            //Deteccion de mensajes
     
     if (message.author.bot) return;                             //Prevencion bucle infinito
+   //if (!message.content.startsWith(prefix)) return;           //Prevencion bucle infinito
    
-    if(message.content.includes("potoo")){
-       
+    unPrefixed(message);                                        //Conj unto de comandos que no necesitan prefijo
+
+    if(message.author.tag == "Chocapic#4309" || message.author.tag == "pemaga12#3068"){             //Comandos policía  
+        estebaranz(message);   
+    } 
+    
+    if(message.content.startsWith(soundPrefix)){
         const embed = new Discord.RichEmbed() 
-        .setTitle("Ahi te va un pajarito cocainómano")
-        .setColor(0xFABADA)
-        .setDescription("")
-        .setFooter("Los pajaros potoo y pollazo S.L. © dominarán el mundo", client.user.avatarURL)
-
-        message.channel.send({embed});
-        message.channel.send({
-            file: "http://i.imgur.com/t7v7PlV.jpg" //Imagen
-        });
-
+            .setTitle("pollazo")
+    
+            message.channel.send({embed});
+        sound(message);
     }
 
-    if(message.content.includes("titi")){
-            
-        const embed = new Discord.RichEmbed() 
-        .setTitle("Titis a la venta")
-        .setColor(0xFABADA)
-        .setDescription("Compra un titi, el mejor animal a la venta")
-        .setFooter("Titi es vendido por pollazo S.L. ©", client.user.avatarURL)
-
-        message.channel.send({embed});
-        message.channel.send({
-            file: "http://i.imgur.com/590SeEm.jpg" //Imagen
-        });
-
-    }
-    
-    if(message.author.tag == "Chocapic#4309" || message.author.tag == "pemaga12#3068"){             //Comandos policía
-       estebaranz(message);   
-    }   
-
-   
-    if (!message.content.startsWith(prefix)) return;            //Prevencion bucle infinito
-    
     if (message.content.startsWith(prefix)){
-
         if (message.content.startsWith(prefix + "help")){
             const embed = new Discord.RichEmbed() 
             .setTitle("Lista de comandos")
@@ -420,23 +398,6 @@ client.on("ready", () => {
             }
         }
 
-        else if (message.content.startsWith(prefix + "fbi") && message.author.tag == "Chocapic#4309") {
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
-                message.channel.send(':police_car:  | OPEN UP');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':police_car:  | OPEN UP').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`); 
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
         else if (message.content.startsWith(prefix + "vete")) { 
             let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz) {
@@ -463,7 +424,7 @@ client.on("ready", () => {
 
  });
  
-function estebaranz(message){
+function estebaranz(message){                       //Comandos pertenecientes al rol "Policia"
     if(message.content.includes("detenido")){
             
         const embed = new Discord.RichEmbed() 
@@ -510,7 +471,118 @@ function estebaranz(message){
 
     }
 
+    else if (message.content.startsWith(prefix + "fbi")) {
+        let Canalvoz = message.member.voiceChannel;
+        if (!Canalvoz || Canalvoz.type !== 'voice') {
+        message.channel.send('Empanado, metete en un canal de voz!.').catch(error => message.channel.send(error));
+        } else if (message.guild.voiceConnection) {
+            const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
+            message.channel.send(':police_car:  | OPEN UP');
+        } else {
+         message.channel.send('Conectando...').then(m => {
+              Canalvoz.join().then(() => {
+                   m.edit(':police_car:  | OPEN UP').catch(error => message.channel.send(error));
+                    const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`); 
+             }).catch(error => message.channel.send(error));
+         }).catch(error => message.channel.send(error));
+        }
+    }
+
     return null;
+}
+
+function forbidden(){                               //Se enviara un mensaje en caso de que un usuario use un comando al que no está autorizado
+    const embed = new Discord.RichEmbed() 
+            .setTitle("Ooops, parece que no puedes usar este comando")
+            .setColor(0x328457)
+            .setDescription("Si quieres crees que no es justo habla con " + config.IdOwner)
+    
+    return embed;
+}
+
+function unPrefixed(message){                       //Comandos sin prefijar
+    if(message.content.includes("potoo")){
+       
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Ahi te va un pajarito cocainómano")
+        .setColor(0xFABADA)
+        .setDescription("")
+        .setFooter("Los pajaros potoo y pollazo S.L. © dominarán el mundo", client.user.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "http://i.imgur.com/t7v7PlV.jpg" //Imagen
+        });
+
+    }
+
+    if(message.content.includes("titi")){
+            
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Titis a la venta")
+        .setColor(0xFABADA)
+        .setDescription("Compra un titi, el mejor animal a la venta")
+        .setFooter("Titi es vendido por pollazo S.L. ©", client.user.avatarURL)
+
+        message.channel.send({embed});
+        message.channel.send({
+            file: "http://i.imgur.com/590SeEm.jpg" //Imagen
+        });
+
+    }
+}
+
+function sound(message){                            //Comandos encargados de reproducir sonidos
+    if (message.content.startsWith(prefix + "help")){
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Lista de comandos de sonidos")
+        .setColor(0x00AE86)
+        .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
+        .addField("canta", "Reproduce una bella cancion", true)
+        .addBlankField(true)
+        .addBlankField(true)
+        .addField("pum", "Hizo pum", true)
+        .addBlankField(true)
+        .addField("rempalago", "Ustedes escucharon ese rempalago?", true)
+        .addBlankField(true)
+        .addField("sad","Solo apta para momentos tristes", true)
+        .addBlankField(true)
+        .addField("roblox","UH", true)
+        .addBlankField(true)
+        .addField("perdon","Me perdonas?", true)
+        addBlankField(true)
+        .addField("lazy","We are number one!", true)
+        addBlankField(true)
+        .addField("wii","Chill sound", true)
+        addBlankField(true)
+        .addField("malacaton",":peach: :peach:", true)
+        addBlankField(true)
+        .addField("fortnite",":bus: :bus:", true)
+        message.channel.send({embed});
+    }
+
+    else if (message.content.startsWith(soundPrefix + "skere")){
+        var ruta = `C:/Users/pedro/Documents/Programacion/Skere/fuente/skere.mp3`;
+        var mensaje = ':japanese_goblin:  | SKEREEEEEEEEE';
+        connectVoice(message, ruta,mensaje);
+    }
+}
+
+function connectVoice(message, ruta, mensaje){
+    let Canalvoz = message.member.voiceChannel;
+            if (!Canalvoz || Canalvoz.type !== 'voice') {
+            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
+            } else if (message.guild.voiceConnection) {
+                const dispatcher = message.guild.voiceConnection.playFile(ruta);
+                message.channel.send(mensaje);
+            } else {
+             message.channel.send('Conectando...').then(m => {
+                  Canalvoz.join().then(() => {
+                       m.edit(mensaje).catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(ruta);
+                 }).catch(error => message.channel.send(error));
+             }).catch(error => message.channel.send(error));
+            }
 }
 
 
