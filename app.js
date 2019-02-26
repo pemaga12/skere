@@ -31,10 +31,6 @@ client.on("ready", () => {
     } 
     
     if(message.content.startsWith(soundPrefix)){
-        const embed = new Discord.RichEmbed() 
-            .setTitle("pollazo")
-    
-            message.channel.send({embed});
         sound(message);
     }
 
@@ -174,229 +170,7 @@ client.on("ready", () => {
             });
         }
 
-        else if (message.content.startsWith(prefix + "canta")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/skere.mp3`);
-                message.channel.send(':japanese_goblin:  | SKEREEEEEEEEE');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':japanese_goblin:  | SKEREEEEEEEEE').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/skere.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
 
-        else if (message.content.startsWith(prefix + "rempalago")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/rempalago.mp3`);
-                message.channel.send(':zap:  | Lo escucharon?');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':zap:  | Lo escucharon?').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/rempalago.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "pum")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/resplandor.mp3`);
-                message.channel.send(':bomb: | Y hizo PUM!');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':bomb: | Y hizo PUM!').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/resplandor.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "sad")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/sad.mp3`);
-                message.channel.send(':sob: | Tocaré mi violín invisible');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':sob: | Tocaré mi violín invisible').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/sad.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "huevos")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/huevos.mp3`);
-                message.channel.send(':egg: | Adri, no me cobres copyright plz :(');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':egg: | Adri, no me cobres copyright plz :(').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/huevos.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "roblox")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/roblox.mp3`);
-                message.channel.send(':robot: | UHHHH');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':robot: | UHHHH').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/roblox.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        
-        else if (message.content.startsWith(prefix + "lazy")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/lazy.mp3`);
-                message.channel.send(':one: | We are number one!!');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':one: | We are number one!!').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/lazy.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "wii")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/wii.mp3`);
-                message.channel.send(':video_game: | Back to 2006');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':video_game: | Back to 2006').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/wii.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "papada")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/papada.mp3`);
-                message.channel.send(':no_good: | El podeeer de la papadaaa');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':no_good: | El podeeer de la papadaaa').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/papada.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-
-        else if (message.content.startsWith(prefix + "derp")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/derp.mp3`);
-                message.channel.send(':no_good: | derp');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':no_good: | derp').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/derp.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        
-        else if (message.content.startsWith(prefix + "malacaton")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/malacaton.mp3`);
-                message.channel.send(':peach: | Wellington quiu');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':peach: | Wellington quiu').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/malacaton.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-
-        else if (message.content.startsWith(prefix + "perdon")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/perdonas.mp3`);
-                message.channel.send(':cat: | Me perdonas?');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':cat: | Me perdonas?').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/perdonas.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
-        
-        else if (message.content.startsWith(prefix + "fortnite")) { 
-            let Canalvoz = message.member.voiceChannel;
-            if (!Canalvoz || Canalvoz.type !== 'voice') {
-            message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
-            } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fortnite.mp3`);
-                message.channel.send(':bus: | Saltemos');
-            } else {
-             message.channel.send('Conectando...').then(m => {
-                  Canalvoz.join().then(() => {
-                       m.edit(':bus: | Saltemos').catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fortnite.mp3`);
-                 }).catch(error => message.channel.send(error));
-             }).catch(error => message.channel.send(error));
-            }
-        }
 
         else if (message.content.startsWith(prefix + "vete")) { 
             let Canalvoz = message.member.voiceChannel;
@@ -472,20 +246,9 @@ function estebaranz(message){                       //Comandos pertenecientes al
     }
 
     else if (message.content.startsWith(prefix + "fbi")) {
-        let Canalvoz = message.member.voiceChannel;
-        if (!Canalvoz || Canalvoz.type !== 'voice') {
-        message.channel.send('Empanado, metete en un canal de voz!.').catch(error => message.channel.send(error));
-        } else if (message.guild.voiceConnection) {
-            const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`);
-            message.channel.send(':police_car:  | OPEN UP');
-        } else {
-         message.channel.send('Conectando...').then(m => {
-              Canalvoz.join().then(() => {
-                   m.edit(':police_car:  | OPEN UP').catch(error => message.channel.send(error));
-                    const dispatcher = message.guild.voiceConnection.playFile(`C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`); 
-             }).catch(error => message.channel.send(error));
-         }).catch(error => message.channel.send(error));
-        }
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/fbi.mp3`;
+        var dialog = ':police_car:  | OPEN UP';
+        connectVoice(message, route, dialog);
     }
 
     return null;
@@ -533,7 +296,12 @@ function unPrefixed(message){                       //Comandos sin prefijar
 }
 
 function sound(message){                            //Comandos encargados de reproducir sonidos
-    if (message.content.startsWith(prefix + "help")){
+  
+    
+    if (message.content.startsWith(soundPrefix + "help")){
+        
+       
+        
         const embed = new Discord.RichEmbed() 
         .setTitle("Lista de comandos de sonidos")
         .setColor(0x00AE86)
@@ -547,39 +315,128 @@ function sound(message){                            //Comandos encargados de rep
         .addBlankField(true)
         .addField("sad","Solo apta para momentos tristes", true)
         .addBlankField(true)
+        .addBlankField(true)
         .addField("roblox","UH", true)
         .addBlankField(true)
+        .addBlankField(true)
         .addField("perdon","Me perdonas?", true)
-        addBlankField(true)
+        .addBlankField(true)
+        .addBlankField(true)
         .addField("lazy","We are number one!", true)
-        addBlankField(true)
+        .addBlankField(true)
+        .addBlankField(true)
         .addField("wii","Chill sound", true)
-        addBlankField(true)
+        .addBlankField(true)
+        .addBlankField(true)
         .addField("malacaton",":peach: :peach:", true)
-        addBlankField(true)
-        .addField("fortnite",":bus: :bus:", true)
+        .addField("mas comandos...","Además de estos existen aun más comandos, pero tendrás que encontrarlos!", true)
         message.channel.send({embed});
     }
 
-    else if (message.content.startsWith(soundPrefix + "skere")){
-        var ruta = `C:/Users/pedro/Documents/Programacion/Skere/fuente/skere.mp3`;
-        var mensaje = ':japanese_goblin:  | SKEREEEEEEEEE';
-        connectVoice(message, ruta,mensaje);
+    else if (message.content.startsWith(soundPrefix + "canta")){
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/skere.mp3`;
+        var dialog = ':japanese_goblin:  | SKEREEEEEEEEE';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "rempalago")) { 
+            
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/rempalago.mp3`;
+        var dialog =':zap: | Lo escucharon?';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "pum")) { 
+        
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/resplandor.mp3`;
+        var dialog =':bomb: | Y hizo PUM!';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "sad")) { 
+       
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/sad.mp3`;
+        var dialog =':sob: | Tocaré mi violín invisible';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "huevos")) { 
+    
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/huevos.mp3`;
+        var dialog = ':egg: | Adri, no me cobres copyright plz :(';
+        connectVoice(message, route, dialog);     
+    }
+
+    else if (message.content.startsWith(soundPrefix + "roblox")) { 
+        
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/roblox.mp3`;
+        var dialog = ':robot: | UHHHH';
+        connectVoice(message, route, dialog);
+    }
+
+    
+    else if (message.content.startsWith(soundPrefix + "lazy")) { 
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/lazy.mp3`;
+        var dialog = ':one: | We are number one!!';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "wii")) { 
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/wii.mp3`;
+        var dialog = ':video_game: | Back to 2006';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "papada")) { 
+                   
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/papada.mp3`;
+        var dialog = ':no_good: | El podeeer de la papadaaa';
+        connectVoice(message, route, dialog);
+    }
+
+
+    else if (message.content.startsWith(soundPrefix + "derp")) { 
+        
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/derp.mp3`;
+        var dialog = ':no_good: | derp';
+        connectVoice(message, route, dialog);
+    }
+
+    
+    else if (message.content.startsWith(soundPrefix + "malacaton")) { 
+        
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/malacaton.mp3`;
+        var dialog = ':peach: | Wellington quiu';
+        connectVoice(message, route, dialog);
+    }
+
+    else if (message.content.startsWith(soundPrefix + "perdon")) { 
+        
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/perdonas.mp3`;
+        var dialog = ':cat: | Me perdonas?';
+        connectVoice(message, route, dialog);
+    }
+    
+    else if (message.content.startsWith(soundPrefix + "fortnite")) { 
+       
+        var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/fortnite.mp3`;
+        var dialog = ':bus: | Saltemos';
+        connectVoice(message, route, dialog);
     }
 }
 
-function connectVoice(message, ruta, mensaje){
+function connectVoice(message, route, dialog){
     let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz || Canalvoz.type !== 'voice') {
             message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
             } else if (message.guild.voiceConnection) {
-                const dispatcher = message.guild.voiceConnection.playFile(ruta);
-                message.channel.send(mensaje);
+                const dispatcher = message.guild.voiceConnection.playFile(route);
+                message.channel.send(dialog);
             } else {
              message.channel.send('Conectando...').then(m => {
                   Canalvoz.join().then(() => {
-                       m.edit(mensaje).catch(error => message.channel.send(error));
-                        const dispatcher = message.guild.voiceConnection.playFile(ruta);
+                       m.edit(dialog).catch(error => message.channel.send(error));
+                        const dispatcher = message.guild.voiceConnection.playFile(route);
                  }).catch(error => message.channel.send(error));
              }).catch(error => message.channel.send(error));
             }
