@@ -3,6 +3,7 @@ const client = new Discord.Client();
 const config = require("./config.json");
 var prefix = config.prefix;
 var soundPrefix = config.soundPrefix;
+var namePrefix = config.namePrefix;
 
 
 
@@ -30,147 +31,32 @@ client.on("ready", () => {
         estebaranz(message);   
     } 
     
-    if(message.content.startsWith(soundPrefix)){
+    if(message.content.startsWith(soundPrefix)){                    //Conjunto de comandos que empiezan con !sound
         sound(message);
     }
 
-    if (message.content.startsWith(prefix)){
+    if(message.content.startsWith(namePrefix)){                     //Conjunto de comandos que empiezan con !name
+        name(message);
+    }
+
+    if (message.content.startsWith(prefix)){                        //Conjunto de comandos que comienzan con !prefix
         if (message.content.startsWith(prefix + "help")){
             const embed = new Discord.RichEmbed() 
-            .setTitle("Lista de comandos")
+            .setTitle("Lista de comandos generales")
             .setColor(0x00AE86)
             .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
-            .addField("pedro", "El amado dictador", true)
-            .addBlankField(true)
-            .addBlankField(true)
-            .addField("raquel", "Mi waifu <3", true)
-            .addBlankField(true)
-            .addField("mauri", "Cuidado con este comando, es peligroso", true)
-            .addBlankField(true) 
-            .addField("dani", "Amante del fortnite, agregadle", true)
-            .addBlankField(true)
-            .addBlankField(true)
-            .addField("estebaranz", "Escáner del grupo", true) 
-            .addBlankField(true)
-            .addBlankField(true)
-            .addField("adri", "Tiene una extraña obsesión", true)
-            .addBlankField(true)
-            .addBlankField(true)
-            .addField("alvaro", "El maestro", true)
-            .addBlankField(true)
-            .addBlankField(true)
-            .addField("canta", "Reproduce una bella cancion", true)
-            .addBlankField(true)
-            .addBlankField(true)
-            .addField("?", "hizo pum", true)
-            .addBlankField(true)
-            .addField("?", "ustedes escucharon ese rempalago?", true)
-
-
-
+            .addField("!sound", "Conjunto de comandos relacionados con sonidos.\n!sound help para más informacion.", true)
+            .addField("!name", "Conjunto de comandos relacionados con los miembros del servidor.\n!name help para más información.", true)
+            .addField("!skere vete", "En caso de que quieras privacidad.\nEl bot abandonará el canal de voz.", true)
+            .addField("!skere donate", "Dame un euro, soy pobre.", true)
             message.channel.send({embed});
         }
 
-        else if(message.content.startsWith(prefix + "mauri")){
-            
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de mauri todopoderoso")
-            .setColor(0xFABADA)
-            .setDescription("Quien osa llamar al dios.\nComo penitencia deberás adorar su rastrillo o serás castigado...")
-            .setFooter("Este mensaje ha sido creado tipo por tipo pollazo S.L. ©, sabes?", client.user.avatarURL)
-    
-            message.channel.send({embed});
-            message.channel.send({
-                file: "http://i.imgur.com/mEPISi0.png" //Imagen
-            });
-
+        else if (message.content.startsWith(prefix + "donate")){
+            var title = "Donaciones"; var desc = "Si me ha costado programar algunas partes del bot estás tu que voy a ser capaz de meter un apartado de donaciones";
+            var foott = "(Si alguien quiere invitarme a un monster lo acepto :S) pollazo S.L. ©";
+            sendMessage(message, title, desc, foott, null, null);
         }
-
-        else if(message.content.startsWith(prefix + "alvaro")){
-            
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de Alvaro, un chico tranquilo")
-            .setColor(0xFABADA)
-            .setDescription("Capaz de robar carteles de mastercard.\nTiene un master en asistencia a clases de redes.\nAdemás, como se puede observar en la imagen es un chico muy tranquilo.")
-            .setFooter("Mensaje generado por pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-            message.channel.send({
-                file: "http://i.imgur.com/sQ4tvB0.jpg" //Imagen
-            });
-
-        }
-
-        else if (message.content.startsWith(prefix + "pedro")){
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de pedro, el dictador")
-            .setColor(0xFABADA)
-            .setDescription("Cuidado con este hombre.\nPuedes perder mucho ELO y acabar fusilado...")
-            .setFooter("Send nudes a pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-
-            message.channel.send({
-                file: "http://i.imgur.com/bJrYHr5.jpg" //Imagen
-            });
-        }
-
-        else if (message.content.startsWith(prefix + "dani")){
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de dani, amante del fortnite")
-            .setColor(0xFABADA)
-            .setDescription("Agregadle al fortnite, ambos lo disfrutaréis")
-            .setFooter("Usad el codigo DANIOLO69HD. By pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-
-            message.channel.send({
-                file: "http://i.imgur.com/psokPUQ.png" //Imagen
-            });
-        }
-
-        else if (message.content.startsWith(prefix + "raquel")){
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de raquel, la waifu")
-            .setColor(0x616814)
-            .setDescription("Pintora de la corte. Encargada de representar al dictador.\nBellas artes no daba para mucho mas.")
-            .setFooter("Era bromi, no me dejes sin sexo by pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-
-            message.channel.send({
-                file: "http://i.imgur.com/sOHtEud.jpg" //Imagen
-            });
-        }
-
-        else if (message.content.startsWith(prefix + "estebaranz")){
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de estebaranz, alias Laurita69HD")
-            .setColor(0x328457)
-            .setDescription("Si tienes algun documento que escanear mándaselo.\nAmante de Laurita69HD.")
-            .setFooter("Afiliado con Epson. By pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-
-            message.channel.send({
-                file: "http://i.imgur.com/DZ2m8CS.jpg" //Imagen
-            });
-        }
-
-        else if (message.content.startsWith(prefix + "adri")){
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Comando de adri")
-            .setColor(0x243523)
-            .setDescription("COMEDLE LOS HUEVOS.\nHIJOS DE PUTA.")
-            .setFooter("Le gusta que le coman los huevos pero no el pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-            message.channel.send({
-                file: "http://i.imgur.com/cSJ8KBm.jpg" //Imagen
-            });
-        }
-
-
 
         else if (message.content.startsWith(prefix + "vete")) { 
             let Canalvoz = message.member.voiceChannel;
@@ -182,18 +68,6 @@ client.on("ready", () => {
                 }).catch(error => message.channel.send(error));
             }   
         }
-
-        else if (message.content.startsWith(prefix + "?")){
-            const embed = new Discord.RichEmbed() 
-            .setTitle("Tonto")
-            .setColor(0x1B95E0)
-            .setDescription("Si has puesto el ? porque lo has visto el comando help, ? quiere decir que tienes que averiguar el comando.\nMenudo crack estás hecho.")
-            .setFooter("Ya me jodería no haberme dado cuenta. By pollazo S.L. ©", client.user.avatarURL)
-    
-            message.channel.send({embed});
-        }
-
-
     } 
 
  });
@@ -300,10 +174,8 @@ function sound(message){                            //Comandos encargados de rep
     
     if (message.content.startsWith(soundPrefix + "help")){
         
-       
-        
         const embed = new Discord.RichEmbed() 
-        .setTitle("Lista de comandos de sonidos")
+        .setTitle("Lista de comandos para !sound")
         .setColor(0x00AE86)
         .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
         .addField("canta", "Reproduce una bella cancion", true)
@@ -374,7 +246,6 @@ function sound(message){                            //Comandos encargados de rep
         connectVoice(message, route, dialog);
     }
 
-    
     else if (message.content.startsWith(soundPrefix + "lazy")) { 
         var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/lazy.mp3`;
         var dialog = ':one: | We are number one!!';
@@ -402,7 +273,6 @@ function sound(message){                            //Comandos encargados de rep
         connectVoice(message, route, dialog);
     }
 
-    
     else if (message.content.startsWith(soundPrefix + "malacaton")) { 
         
         var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/malacaton.mp3`;
@@ -418,7 +288,7 @@ function sound(message){                            //Comandos encargados de rep
     }
     
     else if (message.content.startsWith(soundPrefix + "fortnite")) { 
-       
+
         var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/fortnite.mp3`;
         var dialog = ':bus: | Saltemos';
         connectVoice(message, route, dialog);
@@ -442,6 +312,127 @@ function connectVoice(message, route, dialog){
             }
 }
 
+function sendMessage(message, title, description, footer, col, footerIcon){
+    if(col == null) col = ("0xFABADA");
+    if(footerIcon == null) footerIcon = client.user.avatarURL;
+    const embed = new Discord.RichEmbed() 
+    .setTitle(title)
+    .setColor(col)
+    .setDescription(description)
+    .setFooter(footer, footerIcon)
+    message.channel.send({embed});   
+}
+
+function sendImage (message, fil){
+    message.channel.send({
+        file: fil //Imagen
+    });
+}
+
+function name(message){
+    if(message.content.startsWith(namePrefix + "help")){
+        const embed = new Discord.RichEmbed() 
+        .setTitle("Lista de comandos para !name")
+        .setColor(0x00AE86)
+        .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
+        .addField("pedro", "El amado dictador", true)
+        .addBlankField(true)
+        .addBlankField(true)
+        .addField("raquel", "Mi waifu <3", true)
+        .addBlankField(true)
+        .addField("mauri", "Cuidado con este comando, es peligroso", true)
+        .addBlankField(true) 
+        .addField("dani", "Amante del fortnite, agregadle", true)
+        .addBlankField(true)
+        .addBlankField(true)
+        .addField("estebaranz", "Escáner del grupo", true) 
+        .addBlankField(true)
+        .addBlankField(true)
+        .addField("adri", "Tiene una extraña obsesión", true)
+        .addBlankField(true)
+        .addBlankField(true)
+        .addField("alvaro", "El maestro", true)
+        .addBlankField(true)
+        .addField("?", "Existen más comandos (y aun faltan por venir), pero tendrás que averiguarlos")
+        message.channel.send({embed});
+    }
+     
+    else if(message.content.startsWith(namePrefix + "mauri")){
+            
+        var titulo = "Comando de mauri todopoderoso"; var desc = "Quien osa llamar al dios.\nComo penitencia deberás adorar su rastrillo o serás castigado..."; 
+        var foot = "Este mensaje ha sido creado tipo por tipo pollazo S.L. ©, sabes?";
+        sendMessage(message, titulo, desc, foot, null, null);
+       
+        var url = "http://i.imgur.com/mEPISi0.png";
+        sendImage(message, url);
+    }
+
+    else if(message.content.startsWith(namePrefix + "alvaro")){
+        
+        var titulo = "Comando de Alvaro, un chico tranquilo"; var desc = "Capaz de robar carteles de mastercard.\nTiene un master en asistencia a clases de redes.\nAdemás, como se puede observar en la imagen es un chico muy tranquilo."; 
+        var foot = "Mensaje generado por pollazo S.L. ©";
+        sendMessage(message, titulo, desc, foot, null, null);
+       
+        var url = "http://i.imgur.com/sQ4tvB0.jpg";
+        sendImage(message, url);
+    }
+
+    else if (message.content.startsWith(namePrefix + "pedro")){
+        
+        var titulo = "Comando de pedro, el dictador"; var desc = "Cuidado con este hombre.\nPuedes perder mucho ELO y acabar fusilado..."; 
+        var foot = "Send nudes a pollazo S.L. ©";
+        sendMessage(message, titulo, desc, foot, null, null);
+       
+        var url = "http://i.imgur.com/bJrYHr5.jpg";
+        sendImage(message, url);
+    }
+
+    else if (message.content.startsWith(namePrefix + "dani")){
+       
+        var titulo = "Comando de dani, amante del fortnite"; var desc = "Agregadle al fortnite, ambos lo disfrutaréis"; 
+        var foot = "Usad el codigo DANIOLO69HD. By pollazo S.L. ©"; var col = "0xFABADA";
+        sendMessage(message, titulo, desc, foot, col, null);
+       
+        var url = "http://i.imgur.com/psokPUQ.png";
+        sendImage(message, url);
+    }
+
+    else if (message.content.startsWith(namePrefix + "raquel")){
+       
+        var titulo = "Comando de raquel, la waifu"; var desc = "Pintora de la corte. Encargada de representar al dictador.\nBellas artes no daba para mucho mas."; 
+        var foot = "Era bromi, no me dejes sin sexo by pollazo S.L. ©"; var col = "0x616814";
+        sendMessage(message, titulo, desc, foot, col, null);
+       
+        var url = "http://i.imgur.com/sOHtEud.jpg";
+        sendImage(message, url);
+    }
+
+    else if (message.content.startsWith(namePrefix + "estebaranz")){
+        
+        var titulo = "Comando de estebaranz, alias Laurita69HD"; var desc = "Si tienes algun documento que escanear mándaselo.\nAmante de Laurita69HD."; 
+        var foot = "Afiliado con Epson. By pollazo S.L. ©"; var col = "0x328457";
+        sendMessage(message, titulo, desc, foot, col, null);
+
+        var url = "http://i.imgur.com/DZ2m8CS.jpg";
+        sendImage(message, url);
+    }
+
+    else if (message.content.startsWith(namePrefix + "adri")){
+        
+        var titulo = "Comando de Adri"; var desc = "COMEDLE LOS HUEVOS.\nHIJOS DE PUTA."; 
+        var col = "0x243523"; var foot = "Le gusta que le coman los huevos pero no el pollazo S.L. ©";
+        sendMessage(message, titulo, desc, foot, col, null);
+
+        var url = "http://i.imgur.com/cSJ8KBm.jpg";
+        sendImage(message, url);
+    }
+    
+    else if (message.content.startsWith(namePrefix + "?")){
+        var titulo = "Tonto"; var desc = "Si has puesto el ? porque lo has visto el comando help, ? quiere decir que tienes que averiguar el comando.\nMenudo crack estás hecho.";
+        var col = "0x1B95E0"; var foot = "Ya me jodería no haberme dado cuenta. By pollazo S.L. ©";
+        sendMessage(message, titulo, desc, foot, col, null);
+    }
+}
 
  client.login(config.token); 
 
