@@ -4,7 +4,7 @@ const config = require("./config.json");
 var prefix = config.prefix;
 var soundPrefix = config.soundPrefix;
 var namePrefix = config.namePrefix;
-
+var pollPrefix = config.pollPrefix;
 
 
 client.on("ready", () => {
@@ -35,11 +35,15 @@ client.on("ready", () => {
         sound(message);
     }
 
-    if(message.content.startsWith(namePrefix)){                     //Conjunto de comandos que empiezan con !name
+    else if(message.content.startsWith(namePrefix)){                     //Conjunto de comandos que empiezan con !name
         name(message);
     }
 
-    if (message.content.startsWith(prefix)){                        //Conjunto de comandos que comienzan con !prefix
+    else if(message.content.startsWith(pollPrefix)){
+        poll(message);
+    }
+
+    else if (message.content.startsWith(prefix)){                        //Conjunto de comandos que comienzan con !prefix
         if (message.content.startsWith(prefix + "help")){
             const embed = new Discord.RichEmbed() 
             .setTitle("Lista de comandos generales")
@@ -175,7 +179,7 @@ function sound(message){                            //Comandos encargados de rep
     if (message.content.startsWith(soundPrefix + "help")){
         
         const embed = new Discord.RichEmbed() 
-        .setTitle("Lista de comandos para !canta")
+        .setTitle("Lista de comandos para !canta ")
         .setColor(0x00AE86)
         .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
         .addField("skere", "Reproduce una bella cancion", true)
@@ -432,6 +436,26 @@ function name(message){                             //Comandos encargados de los
         var col = "0x1B95E0"; var foot = "Ya me jodería no haberme dado cuenta. By pollazo S.L. ©";
         sendMessage(message, titulo, desc, foot, col, null);
     }
+}
+
+function poll(message){                                  //Creación de encuestas
+
+    const embed = new Discord.RichEmbed() 
+    .setTitle("Encuesta:")
+    .setColor("0xFF4500")
+    .setDescription("\n" + message.content.split("!poll").pop() + "\n")
+    .setFooter("Ecuesta creada por " + message.author.username, message.author.avatarURL)
+    message.channel.send({embed})
+    .then(function (message) {
+        message.react("👍")
+        message.react("👎")
+        message.react("🤷")
+        message.pin()
+        //message.delete()
+      }).catch(function() {
+        console.log("Algo ha fallado al crear la encuesta");
+       });
+
 }
 
  client.login(config.token);                        

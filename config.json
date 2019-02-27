@@ -3,6 +3,7 @@
     "prefix":"!skere ",
     "soundPrefix": "!canta ",
     "namePrefix": "!name ",
+    "pollPrefix": "!poll",
     "IdOwner":"pemaga12"           
 }
        
