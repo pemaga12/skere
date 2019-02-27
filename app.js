@@ -9,15 +9,15 @@ var namePrefix = config.namePrefix;
 
 client.on("ready", () => {
     console.log("venga crack, skere funciona!");
-    //client.user.setStatus("STREAMING");
-    //client.user.setActivity('Acariciar Gatitos')
-    client.user.setPresence({
+    client.user.setStatus("PLAYING");
+    client.user.setActivity('Acariciar Gatitos')
+    /*client.user.setPresence({
         game: {
             name: 'Perreo del duro',
             type: "STREAMING",
             url: "https://www.twitch.tv/monstercat"
         }
-    }); 
+    }); */
  });
 
  client.on("message", (message) => {                            //Deteccion de mensajes
@@ -45,7 +45,7 @@ client.on("ready", () => {
             .setTitle("Lista de comandos generales")
             .setColor(0x00AE86)
             .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
-            .addField("!sound", "Conjunto de comandos relacionados con sonidos.\n!sound help para más informacion.", true)
+            .addField("!canta", "Conjunto de comandos relacionados con sonidos.\n!sound help para más informacion.", true)
             .addField("!name", "Conjunto de comandos relacionados con los miembros del servidor.\n!name help para más información.", true)
             .addField("!skere vete", "En caso de que quieras privacidad.\nEl bot abandonará el canal de voz.", true)
             .addField("!skere donate", "Dame un euro, soy pobre.", true)
@@ -175,10 +175,10 @@ function sound(message){                            //Comandos encargados de rep
     if (message.content.startsWith(soundPrefix + "help")){
         
         const embed = new Discord.RichEmbed() 
-        .setTitle("Lista de comandos para !sound")
+        .setTitle("Lista de comandos para !canta")
         .setColor(0x00AE86)
         .setFooter("Desarrollado por pollazo S.L. ©", client.user.avatarURL)
-        .addField("canta", "Reproduce una bella cancion", true)
+        .addField("skere", "Reproduce una bella cancion", true)
         .addBlankField(true)
         .addBlankField(true)
         .addField("pum", "Hizo pum", true)
@@ -205,7 +205,7 @@ function sound(message){                            //Comandos encargados de rep
         message.channel.send({embed});
     }
 
-    else if (message.content.startsWith(soundPrefix + "canta")){
+    else if (message.content.startsWith(soundPrefix + "skere")){
         var route = `C:/Users/pedro/Documents/Programacion/Skere/fuente/skere.mp3`;
         var dialog = ':japanese_goblin:  | SKEREEEEEEEEE';
         connectVoice(message, route, dialog);
@@ -295,7 +295,7 @@ function sound(message){                            //Comandos encargados de rep
     }
 }
 
-function connectVoice(message, route, dialog){
+function connectVoice(message, route, dialog){      //Función encargada de reproducir un sonido almacenado en el ordenador
     let Canalvoz = message.member.voiceChannel;
             if (!Canalvoz || Canalvoz.type !== 'voice') {
             message.channel.send('¡Necesitas unirte a un canal de voz primero!.').catch(error => message.channel.send(error));
@@ -312,7 +312,7 @@ function connectVoice(message, route, dialog){
             }
 }
 
-function sendMessage(message, title, description, footer, col, footerIcon){
+function sendMessage(message, title, description, footer, col, footerIcon){     //Función encargada del envío de embeds
     if(col == null) col = ("0xFABADA");
     if(footerIcon == null) footerIcon = client.user.avatarURL;
     const embed = new Discord.RichEmbed() 
@@ -323,13 +323,13 @@ function sendMessage(message, title, description, footer, col, footerIcon){
     message.channel.send({embed});   
 }
 
-function sendImage (message, fil){
+function sendImage (message, fil){                                              //Función encargada del envío de archivos
     message.channel.send({
         file: fil //Imagen
     });
 }
 
-function name(message){
+function name(message){                             //Comandos encargados de los nombres
     if(message.content.startsWith(namePrefix + "help")){
         const embed = new Discord.RichEmbed() 
         .setTitle("Lista de comandos para !name")
@@ -434,5 +434,5 @@ function name(message){
     }
 }
 
- client.login(config.token); 
+ client.login(config.token);                        
 
